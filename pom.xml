@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2021 苗锦洲
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>tech.ordinaryroad.quarkus</groupId>
+    <artifactId>ordinaryroad-quarkus</artifactId>
+    <version>1.3.1</version>
+    <packaging>pom</packaging>
+
+    <name>ordinaryroad</name>
+    <url>https://ordinaryroad.top</url>
+    <description>OrdinaryRoad-Quarkus</description>
+
+    <properties>
+        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+        <quarkus.platform.version>2.10.1.Final</quarkus.platform.version>
+
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <ordinaryroad.version>1.3.1</ordinaryroad.version>
+        <ordinaryroad-quarkus.version>1.3.1</ordinaryroad-quarkus.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <quarkus.satoken.version>1.30.0</quarkus.satoken.version>
+        <quarkus-mybatis-plus.version>1.0.4</quarkus-mybatis-plus.version>
+
+        <fastjson2.version>2.0.10</fastjson2.version>
+        <hutool.version>5.8.5</hutool.version>
+
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <lombok.version>1.18.24</lombok.version>
+    </properties>
+
+    <modules>
+        <module>ordinaryroad-commons</module>
+    </modules>
+
+    <!-- 以下依赖 全局所有的模块都会引入 -->
+    <dependencies>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- 依赖声明 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- quarkus -->
+            <dependency>
+                <groupId>${quarkus.platform.group-id}</groupId>
+                <artifactId>${quarkus.platform.artifact-id}</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- hutool -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- fastjson2 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+
+            <!-- quarkus-mybatis-plus https://github.com/quarkiverse/quarkus-mybatis -->
+            <dependency>
+                <groupId>io.quarkiverse.mybatis</groupId>
+                <artifactId>quarkus-mybatis-plus</artifactId>
+                <version>${quarkus-mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- quarkus-satoken-resteasy -->
+            <dependency>
+                <groupId>io.quarkiverse.satoken</groupId>
+                <artifactId>quarkus-satoken-resteasy</artifactId>
+                <version>${quarkus.satoken.version}</version>
+            </dependency>
+
+            <!-- quarkus-satoken-dao-redis-jackson -->
+            <dependency>
+                <groupId>io.quarkiverse.satoken</groupId>
+                <artifactId>quarkus-satoken-dao-redis-jackson</artifactId>
+                <version>${quarkus.satoken.version}</version>
+            </dependency>
+
+            <!-- ordinaryroad-commons-base -->
+            <dependency>
+                <groupId>tech.ordinaryroad</groupId>
+                <artifactId>ordinaryroad-commons-base</artifactId>
+                <version>${ordinaryroad.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <activation>
+                <property>
+                    <name>native</name>
+                </property>
+            </activation>
+            <properties>
+                <skipITs>false</skipITs>
+                <quarkus.package.type>native</quarkus.package.type>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- omitted xml -->
+    <distributionManagement>
+        <repository>
+            <!--必须与 settings.xml 的 id 一致-->
+            <id>ordinaryroad-ordinaryroad-maven-pro</id>
+            <name>maven-pro</name>
+            <url>https://ordinaryroad-maven.pkg.coding.net/repository/ordinaryroad/maven-pro/</url>
+        </repository>
+    </distributionManagement>
+</project>
