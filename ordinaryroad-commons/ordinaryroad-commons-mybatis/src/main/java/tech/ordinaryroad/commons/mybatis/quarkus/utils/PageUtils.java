@@ -25,7 +25,9 @@
 package tech.ordinaryroad.commons.mybatis.quarkus.utils;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -46,8 +48,12 @@ public class PageUtils {
      * @param <T>    T
      * @return T Page
      */
-    public static <DO, T> Page<T> copyPage(Page<DO> doPage) {
-        return Page.of(doPage.getCurrent(), doPage.getSize(), doPage.getTotal(), doPage.searchCount());
+    public static <DO, T> IPage<T> copyPage(IPage<DO> doPage) {
+        if (doPage instanceof PageDTO) {
+            return PageDTO.of(doPage.getCurrent(), doPage.getSize(), doPage.getTotal(), doPage.searchCount());
+        } else {
+            return Page.of(doPage.getCurrent(), doPage.getSize(), doPage.getTotal(), doPage.searchCount());
+        }
     }
 
     /**
@@ -59,8 +65,20 @@ public class PageUtils {
      * @param <DTO>  DTO
      * @return DTO PageInfo
      */
+    public static <DO, DTO> IPage<DTO> copyPage(IPage<DO> doPage, Function<DO, DTO> mapper) {
+        IPage<DTO> dtoPage = copyPage(doPage);
+        dtoPage.setRecords(doPage.getRecords().stream().map(mapper).collect(Collectors.toList()));
+        return dtoPage;
+    }
+
     public static <DO, DTO> Page<DTO> copyPage(Page<DO> doPage, Function<DO, DTO> mapper) {
-        Page<DTO> dtoPage = copyPage(doPage);
+        Page<DTO> dtoPage = (Page<DTO>) copyPage(doPage);
+        dtoPage.setRecords(doPage.getRecords().stream().map(mapper).collect(Collectors.toList()));
+        return dtoPage;
+    }
+
+    public static <DO, DTO> PageDTO<DTO> copyPage(PageDTO<DO> doPage, Function<DO, DTO> mapper) {
+        PageDTO<DTO> dtoPage = (PageDTO<DTO>) copyPage(doPage);
         dtoPage.setRecords(doPage.getRecords().stream().map(mapper).collect(Collectors.toList()));
         return dtoPage;
     }
