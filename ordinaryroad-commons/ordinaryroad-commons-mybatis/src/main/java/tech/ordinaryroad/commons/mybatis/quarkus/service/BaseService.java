@@ -37,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 import tech.ordinaryroad.commons.core.quarkus.base.request.query.BaseQueryRequest;
 import tech.ordinaryroad.commons.mybatis.quarkus.mapper.IBaseMapper;
 import tech.ordinaryroad.commons.mybatis.quarkus.model.BaseDO;
+import tech.ordinaryroad.commons.mybatis.quarkus.utils.TableInfoUtils;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
@@ -55,7 +56,9 @@ import java.util.function.Function;
  * @date 2022/6/12
  */
 @Slf4j
-public class BaseService<D extends IBaseMapper<T>, T extends BaseDO> {
+public abstract class BaseService<D extends IBaseMapper<T>, T extends BaseDO> {
+
+    public abstract Class<T> getEntityClass();
 
     public D getDao() {
         return this.dao;
@@ -297,7 +300,7 @@ public class BaseService<D extends IBaseMapper<T>, T extends BaseDO> {
         List<Boolean> sortDesc = baseQueryRequest.getSortDesc();
         if (ArrayUtil.isNotEmpty(sortBy)) {
             for (int i = 0; i < sortBy.size(); i++) {
-                String columnName = StrUtil.toUnderlineCase(sortBy.get(i));
+                String columnName = TableInfoUtils.getTableFieldColumn(this.getEntityClass(), sortBy.get(i));
                 boolean isDesc = BooleanUtil.isTrue(CollUtil.get(sortDesc, i));
                 wrapper.orderBy(Boolean.TRUE, !isDesc, columnName);
             }
