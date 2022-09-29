@@ -243,6 +243,13 @@ public abstract class BaseService<D extends IBaseMapper<T>, T extends BaseDO> {
             // 如果有报错需要处理
             log.error("TODO fillMetaFieldsWhenCreate createBy failed, " + e);
         }
+        try {
+            // 插入前的回掉
+            fillMetaFieldService.beforeInsert(t);
+        } catch (Exception e) {
+            // 如果有报错需要处理
+            log.error("TODO fillMetaFieldService.beforeInsert() failed, " + e);
+        }
     }
 
     /**
@@ -258,6 +265,13 @@ public abstract class BaseService<D extends IBaseMapper<T>, T extends BaseDO> {
         } catch (Exception e) {
             // 如果有报错需要处理
             log.error("TODO fillMetaFieldsWhenUpdate updateBy failed, " + e);
+        }
+        try {
+            // 更新前的回掉
+            fillMetaFieldService.beforeUpdate(t);
+        } catch (Exception e) {
+            // 如果有报错需要处理
+            log.error("TODO fillMetaFieldService.beforeUpdate() failed, " + e);
         }
     }
 

@@ -144,4 +144,22 @@ public interface IFillMetaFieldService {
      */
     String generateUpdateBy();
 
+    /**
+     * 插入前的回掉
+     *
+     * @param t BaseDO
+     */
+    default <T extends BaseDO> void beforeInsert(T t) {
+        // ignore
+    }
+
+    /**
+     * 更新前的回掉
+     *
+     * @param t BaseDO
+     */
+    default <T extends BaseDO> void beforeUpdate(T t) {
+        // ignore
+    }
+
 }
