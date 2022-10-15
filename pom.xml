@@ -30,7 +30,7 @@
 
     <groupId>tech.ordinaryroad.quarkus</groupId>
     <artifactId>ordinaryroad-quarkus</artifactId>
-    <version>1.3.3</version>
+    <version>1.3.4</version>
     <packaging>pom</packaging>
 
     <name>ordinaryroad</name>
@@ -40,7 +40,7 @@
     <properties>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>2.10.1.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.13.0.Final</quarkus.platform.version>
 
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -49,7 +49,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <quarkus.satoken.version>1.30.0</quarkus.satoken.version>
+        <quarkus.satoken.version>1.30.1-SNAPSHOT</quarkus.satoken.version>
         <quarkus-mybatis-plus.version>1.0.4</quarkus-mybatis-plus.version>
 
         <fastjson2.version>2.0.10</fastjson2.version>
