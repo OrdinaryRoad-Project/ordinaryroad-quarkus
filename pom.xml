@@ -30,7 +30,7 @@
 
     <groupId>tech.ordinaryroad.quarkus</groupId>
     <artifactId>ordinaryroad-quarkus</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.1</version>
     <packaging>pom</packaging>
 
     <name>ordinaryroad</name>
@@ -40,20 +40,19 @@
     <properties>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>2.13.0.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.14.3.Final</quarkus.platform.version>
 
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <ordinaryroad.version>1.4.0</ordinaryroad.version>
-        <ordinaryroad-quarkus.version>1.4.0</ordinaryroad-quarkus.version>
+        <ordinaryroad.version>1.5.1</ordinaryroad.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <quarkus.satoken.version>1.30.1-OR</quarkus.satoken.version>
-        <quarkus-mybatis-plus.version>1.0.4</quarkus-mybatis-plus.version>
+        <quarkus.satoken.version>1.31.0</quarkus.satoken.version>
+        <quarkus-mybatis-plus.version>1.0.5</quarkus-mybatis-plus.version>
 
-        <fastjson2.version>2.0.10</fastjson2.version>
-        <hutool.version>5.8.5</hutool.version>
+        <fastjson2.version>2.0.20</fastjson2.version>
+        <hutool.version>5.8.10</hutool.version>
 
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <lombok.version>1.18.24</lombok.version>
