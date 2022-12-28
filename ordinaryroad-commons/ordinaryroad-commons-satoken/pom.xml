@@ -54,16 +54,16 @@
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
 
-        <!-- quarkus-satoken-resteasy -->
+        <!-- quarkus-sa-token-resteasy -->
         <dependency>
             <groupId>io.quarkiverse.satoken</groupId>
-            <artifactId>quarkus-satoken-resteasy</artifactId>
+            <artifactId>quarkus-sa-token-resteasy</artifactId>
         </dependency>
 
-        <!-- quarkus-satoken-dao-redis-jackson -->
+        <!-- quarkus-sa-token-dao-redis-jackson -->
         <dependency>
             <groupId>io.quarkiverse.satoken</groupId>
-            <artifactId>quarkus-satoken-dao-redis-jackson</artifactId>
+            <artifactId>quarkus-sa-token-dao-redis-jackson</artifactId>
         </dependency>
     </dependencies>
 

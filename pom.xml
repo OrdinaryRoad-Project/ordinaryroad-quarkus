@@ -48,7 +48,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <quarkus.satoken.version>1.31.0</quarkus.satoken.version>
+        <quarkus.satoken.version>1.31.1</quarkus.satoken.version>
         <quarkus-mybatis-plus.version>1.0.5</quarkus-mybatis-plus.version>
 
         <fastjson2.version>2.0.20</fastjson2.version>
@@ -106,17 +106,17 @@
                 <version>${quarkus-mybatis-plus.version}</version>
             </dependency>
 
-            <!-- quarkus-satoken-resteasy -->
+            <!-- quarkus-sa-token-resteasy -->
             <dependency>
                 <groupId>io.quarkiverse.satoken</groupId>
-                <artifactId>quarkus-satoken-resteasy</artifactId>
+                <artifactId>quarkus-sa-token-resteasy</artifactId>
                 <version>${quarkus.satoken.version}</version>
             </dependency>
 
-            <!-- quarkus-satoken-dao-redis-jackson -->
+            <!-- quarkus-sa-token-dao-redis-jackson -->
             <dependency>
                 <groupId>io.quarkiverse.satoken</groupId>
-                <artifactId>quarkus-satoken-dao-redis-jackson</artifactId>
+                <artifactId>quarkus-sa-token-dao-redis-jackson</artifactId>
                 <version>${quarkus.satoken.version}</version>
             </dependency>
 
