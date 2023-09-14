@@ -49,7 +49,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <quarkus.satoken.version>1.31.1</quarkus.satoken.version>
-        <quarkus-mybatis-plus.version>2.1.0</quarkus-mybatis-plus.version>
+        <quarkus-mybatis-plus.version>1.0.8</quarkus-mybatis-plus.version>
 
         <fastjson2.version>2.0.39</fastjson2.version>
         <hutool.version>5.8.21</hutool.version>
